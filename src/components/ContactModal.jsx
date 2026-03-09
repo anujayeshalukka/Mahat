@@ -103,19 +103,19 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/80 backdrop-blur-xl transition-all duration-500 overflow-y-auto p-4 md:p-8">
-            <div className="relative w-full max-w-6xl bg-[#0a0a0a] border border-white/10 rounded-[2rem] overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-[600px]">
+        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80 backdrop-blur-xl transition-all duration-500 overflow-y-auto p-4 md:p-8">
+            {/* Close Button - Outside modal to prevent clipping */}
+            <button
+                onClick={onClose}
+                className="absolute top-6 right-6 z-50 p-2 rounded-full bg-black/20 border border-white/20 text-white/80 hover:bg-[#f4103f] hover:border-[#f4103f] hover:text-white transition-all duration-300"
+            >
+                <IoClose size={24} />
+            </button>
 
-                {/* Close Button */}
-                <button
-                    onClick={onClose}
-                    className="absolute top-6 right-6 z-50 p-2 rounded-full bg-black/5 border border-white/10 text-gray-600 hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300"
-                >
-                    <IoClose size={24} />
-                </button>
+            <div className="relative w-full max-w-6xl bg-[#0a0a0a] border border-white/10 rounded-4xl overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-150">
 
                 {/* Left Side: Brand Info */}
-                <div className="w-full md:w-[35%] p-10 md:p-12 bg-gradient-to-br from-[#06112a] to-[#041947] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between">
+                <div className="w-full md:w-[35%] p-10 md:p-12 bg-linear-to-br from-[#06112a] to-[#041947] border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-between">
                     <div>
                         <div className="flex items-center gap-2 mb-8 h-8">
                             <img src={logo} alt="MAHAT Logo" className="h-full object-contain" />
@@ -231,10 +231,10 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     {isServiceOpen && (
                                         <>
                                             <div
-                                                className="fixed inset-0 z-[10]"
+                                                className="fixed inset-0 z-10"
                                                 onClick={() => setIsServiceOpen(false)}
                                             ></div>
-                                            <div className="absolute top-full left-0 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl z-[11] overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                                            <div className="absolute top-full left-0 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl z-11 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                                                 {["Web Development", "Graphic Design", "Branding", "Social Media", "Other"].map((option) => (
                                                     <div
                                                         key={option}
@@ -271,7 +271,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                             <button
                                 type="submit"
                                 disabled={isSubmitting}
-                                className={`w-full py-5 rounded-2xl bg-gradient-to-r from-[#f4103f] to-[#1140aa] text-white font-bold uppercase tracking-[0.2em] text-xs hover:shadow-[0_15px_35px_rgba(244,16,63,0.3)] transition-all duration-500 transform hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50 disabled:translate-y-0 ${submitStatus === 'success' ? 'from-green-500 to-green-600' : ''}`}
+                                className={`w-full py-5 rounded-2xl bg-linear-to-r from-[#f4103f] to-[#1140aa] text-white font-bold uppercase tracking-[0.2em] text-xs hover:shadow-[0_15px_35px_rgba(244,16,63,0.3)] transition-all duration-500 transform hover:-translate-y-1 active:scale-[0.98] disabled:opacity-50 disabled:translate-y-0 ${submitStatus === 'success' ? 'from-green-500 to-green-600' : ''}`}
                             >
                                 {isSubmitting ? 'Sending...' : submitStatus === 'success' ? 'Message Sent!' : 'Send Message'}
                             </button>

@@ -14,38 +14,46 @@ const MobileBottomNav = ({ setIsTemplatesOpen, setIsContactOpen }) => {
     };
 
     return (
-        <div className="fixed bottom-6 left-1/2 -translate-x-1/2 z-[1000] lg:hidden w-[90%] max-w-[400px]">
-            <div className="bg-black/60 backdrop-blur-2xl border border-white/10 rounded-2xl p-2 flex justify-around items-center shadow-[0_8px_32px_rgba(0,0,0,0.5)]">
+        <div className="fixed bottom-0 left-0 right-0 z-50 lg:hidden">
+            <div className="bg-black/20 backdrop-blur-3xl border-t border-white/20 px-4 py-1 flex justify-around items-center rounded-t-2xl">
                 <button 
                     onClick={scrollToTop}
-                    className="flex flex-col items-center gap-1 p-2 text-white/60 hover:text-[#f4103f] transition-all duration-300 group"
+                    className="flex flex-col items-center gap-1 p-2 text-white/50 hover:text-white transition-all duration-300 group"
                 >
-                    <IoHomeOutline size={20} className="group-hover:scale-110 transition-transform" />
-                    <span className="text-[10px] uppercase tracking-widest font-medium">Home</span>
+                    <div className="p-1 rounded-lg group-hover:bg-linear-to-r group-hover:from-[#f4103f] group-hover:to-[#1140aa] transition-all duration-300">
+                        <IoHomeOutline size={20} className="group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest font-normal">Home</span>
                 </button>
 
                 <button 
                     onClick={scrollToServices}
-                    className="flex flex-col items-center gap-1 p-2 text-white/60 hover:text-[#f4103f] transition-all duration-300 group"
+                    className="flex flex-col items-center gap-1 p-2 text-white/50 hover:text-white transition-all duration-300 group"
                 >
-                    <IoGridOutline size={20} className="group-hover:scale-110 transition-transform" />
-                    <span className="text-[10px] uppercase tracking-widest font-medium">Services</span>
+                    <div className="p-1 rounded-lg group-hover:bg-linear-to-r group-hover:from-[#f4103f] group-hover:to-[#1140aa] transition-all duration-300">
+                        <IoGridOutline size={20} className="group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest font-normal">Services</span>
                 </button>
 
                 <button 
                     onClick={() => setIsTemplatesOpen(true)}
-                    className="flex flex-col items-center gap-1 p-2 text-white/60 hover:text-[#f4103f] transition-all duration-300 group"
+                    className="flex flex-col items-center gap-1 p-2 text-white/50 hover:text-white transition-all duration-300 group"
                 >
-                    <IoAlbumsOutline size={20} className="group-hover:scale-110 transition-transform" />
-                    <span className="text-[10px] uppercase tracking-widest font-medium">Series</span>
+                    <div className="p-1 rounded-lg group-hover:bg-linear-to-r group-hover:from-[#f4103f] group-hover:to-[#1140aa] transition-all duration-300">
+                        <IoAlbumsOutline size={20} className="group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest font-normal">Series</span>
                 </button>
 
                 <button 
-                    onClick={() => setIsContactOpen()}
-                    className="flex flex-col items-center gap-1 p-2 text-white/60 hover:text-[#f4103f] transition-all duration-300 group"
+                    onClick={() => setIsContactOpen(true)}
+                    className="flex flex-col items-center gap-1 p-2 text-white/50 hover:text-white transition-all duration-300 group"
                 >
-                    <IoChatbubbleEllipsesOutline size={20} className="group-hover:scale-110 transition-transform" />
-                    <span className="text-[10px] uppercase tracking-widest font-medium">Talk</span>
+                    <div className="p-1 rounded-lg group-hover:bg-linear-to-r group-hover:from-[#f4103f] group-hover:to-[#1140aa] transition-all duration-300">
+                        <IoChatbubbleEllipsesOutline size={20} className="group-hover:text-white transition-colors" />
+                    </div>
+                    <span className="text-[10px] uppercase tracking-widest font-normal">Talk</span>
                 </button>
             </div>
         </div>

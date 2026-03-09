@@ -2,9 +2,11 @@ import React, { useEffect } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { templates } from '../constants/templates';
 import TemplateEnquiryModal from './TemplateEnquiryModal';
+import ImagePreviewModal from './ImagePreviewModal';
 
 const TemplatesOverlay = ({ isOpen, onClose }) => {
     const [isEnquiryOpen, setIsEnquiryOpen] = React.useState(false);
+    const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
     const [selectedTemplate, setSelectedTemplate] = React.useState(null);
 
     // Prevent scrolling when overlay is open
@@ -77,11 +79,15 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
                             style={{ animationDelay: `${idx * 150}ms` }}
                         >
                             <div className="relative aspect-[4/5] rounded-3xl overflow-hidden border border-white/10 bg-white/5 group-hover:border-[#f4103f]/30 transition-all duration-700">
-                                <img
-                                    src={template.img}
-                                    alt={template.alt}
-                                    className="w-full h-full object-cover opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out"
-                                />
+                                    <img
+                                        src={template.img}
+                                        alt={template.alt}
+                                        onClick={() => {
+                                            setSelectedTemplate(template);
+                                            setIsPreviewOpen(true);
+                                        }}
+                                        className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out cursor-pointer"
+                                    />
 
                                 {/* Hover Overlay */}
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
@@ -128,6 +134,13 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
                 isOpen={isEnquiryOpen}
                 onClose={() => setIsEnquiryOpen(false)}
                 template={selectedTemplate}
+            />
+
+            <ImagePreviewModal
+                isOpen={isPreviewOpen}
+                onClose={() => setIsPreviewOpen(false)}
+                image={selectedTemplate?.img}
+                alt={selectedTemplate?.alt}
             />
         </div>
     );

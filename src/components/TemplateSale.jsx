@@ -4,16 +4,18 @@ import ui2 from '../assets/UI2.png';
 import ui3 from '../assets/UI3.png';
 import ui4 from '../assets/UI4.png';
 import TemplateEnquiryModal from './TemplateEnquiryModal';
+import ImagePreviewModal from './ImagePreviewModal';
 
 const templates = [
-    { id: 1, img: ui1, alt: "Business Elite Template", previewUrl: ui1 },
-    { id: 2, img: ui2, alt: "Creative Portfolio Template", previewUrl: ui2 },
-    { id: 3, img: ui3, alt: "Digital Storefront Template", previewUrl: ui3 },
-    { id: 4, img: ui4, alt: "Conversion Landing Template", previewUrl: ui4 }
+    { id: 1, img: ui1, alt: "Restaurant & Café Website Templates", previewUrl: ui1 },
+    { id: 2, img: ui2, alt: "Healthcare & Clinic Website Templates", previewUrl: ui2 },
+    { id: 3, img: ui3, alt: "Property Business Website Templates", previewUrl: ui3 },
+    { id: 4, img: ui4, alt: "Business & Corporate Website Templates", previewUrl: ui4 }
 ];
 
 const TemplateSale = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
+    const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
     const [selectedTemplate, setSelectedTemplate] = React.useState(null);
 
     const openEnquiryModal = (e, template) => {
@@ -22,8 +24,9 @@ const TemplateSale = () => {
         setIsModalOpen(true);
     };
 
-    const handlePreview = (url) => {
-        window.open(url, '_blank');
+    const handlePreview = (template) => {
+        setSelectedTemplate(template);
+        setIsPreviewOpen(true);
     };
 
     return (
@@ -96,7 +99,7 @@ const TemplateSale = () => {
                     {templates.map((template) => (
                         <div
                             key={template.id}
-                            onClick={() => handlePreview(template.previewUrl)}
+                            onClick={() => handlePreview(template)}
                             className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/5] transition-all duration-500 hover:border-[#f4103f]/50 cursor-pointer shadow-2xl"
                         >
                             <img
@@ -142,6 +145,13 @@ const TemplateSale = () => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 template={selectedTemplate}
+            />
+
+            <ImagePreviewModal
+                isOpen={isPreviewOpen}
+                onClose={() => setIsPreviewOpen(false)}
+                image={selectedTemplate?.img}
+                alt={selectedTemplate?.alt}
             />
         </section>
     );

@@ -47,13 +47,13 @@ const Business = () => {
                             <img
                                 src={mahat3d}
                                 alt="MAHAT 3D Logo"
-                                className="w-full max-w-[150px] sm:max-w-[200px] md:max-w-[250px] h-auto object-contain mix-blend-screen"
+                                className="w-full max-w-20 sm:max-w-50 md:max-w-62.5 h-auto object-contain mix-blend-screen"
                             />
                         </div>
 
                         <h2 className="text-white text-3xl sm:text-5xl md:text-6xl lg:text-8xl font-bold tracking-tight">
                             Ready to scale your
-                            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f4103f] to-[#1140aa]"> Business?</span>
+                            <span className="text-transparent bg-clip-text bg-linear-to-r from-[#f4103f] to-[#1140aa]"> Business?</span>
                             
                         </h2>
 
@@ -66,9 +66,9 @@ const Business = () => {
                             }}
                             className="cursor-pointer group flex flex-col items-end w-fit bg-transparent border-none p-0"
                         >
-                            <span className="text-white text-xs tracking-[0.1em] uppercase font-light group-hover:text-[#f4103f] transition-colors">Consult</span>
-                            <div className="w-full h-[1px] bg-gradient-to-r from-[#f4103f] to-[#1140aa] mt-1.5 relative">
-                                <span className="absolute right-0 -top-[3px] border-t border-r border-[#1140aa] w-[7px] h-[7px] rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></span>
+                            <span className="text-white text-xs tracking-widest uppercase font-light group-hover:text-[#f4103f] transition-colors">Consult</span>
+                            <div className="w-full h-px bg-linear-to-r from-[#f4103f] to-[#1140aa] mt-1.5 relative">
+                                <span className="absolute right-0 -top-0.75 border-t border-r border-[#1140aa] w-1.75 h-1.75 rotate-45 group-hover:translate-x-1 group-hover:-translate-y-1 transition-transform duration-300"></span>
                             </div>
                         </button>
                     </div>

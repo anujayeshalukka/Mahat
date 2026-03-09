@@ -242,13 +242,12 @@ const Footer = () => {
 
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col items-center md:items-start">
-                        {/* <h3 className="text-white text-xl font-bold tracking-tighter mb-2">MAHAT</h3> */}
-                        <p className="text-white/20 text-[10px] uppercase tracking-[0.4em]">© 2024 MAHAT STUDIO. ALL RIGHTS RESERVED.</p>
+                        <p className="text-white/20 text-[10px] text-center md:text-left uppercase tracking-[0.4em]">© 2024 MAHAT STUDIO. ALL RIGHTS RESERVED.</p>
                     </div>
                     
                     <div className="flex items-center gap-2">
                         <div className="h-px w-8 bg-white/10"></div>
-                        <p className="text-[10px] text-white/20 uppercase tracking-[0.3em] font-medium">Visualising ideas</p>
+                        <p className="text-[10px] text-white/20 text-center uppercase tracking-[0.3em] font-medium">Visualising ideas</p>
                         <div className="h-px w-8 bg-white/10"></div>
                     </div>
                 </div>

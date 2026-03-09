@@ -102,10 +102,12 @@ const Navbar = ({ setIsContactOpen, setIsTemplatesOpen }) => {
         }
     }, [isMenuOpen]);
     return (
-        <nav className={`fixed top-0 left-0 w-full flex justify-between items-center px-[5%] pt-2 pb-2 z-[1000] box-border transition-all duration-300 ${scrolled ? "bg-[#041947]/20 backdrop-blur-xl border-b border-white/5" : "bg-transparent"}`}>
-            <div className={`transition-all duration-700 ${scrolled ? "h-[40px] xs:h-[50px] md:h-[70px]" : "h-[60px] xs:h-[70px] md:h-[110px]"} max-w-full `}>
-                <img src={scrolled ? mahatIcon : logo} alt="MAHAT Logo" className="h-full object-contain" />
-            </div>
+        <>
+        <nav className={`fixed top-0 left-0 w-full z-[1000] transition-all duration-300 ${scrolled ? "bg-[#041947]/20 backdrop-blur-xl border-b border-white/5" : "bg-transparent"}`}>
+            <div className="flex justify-between items-center px-[5%] pt-2 pb-2 box-border">
+                <div className={`transition-all duration-700 ${scrolled ? "h-[40px] xs:h-[50px] md:h-[70px]" : "h-[60px] xs:h-[70px] md:h-[110px]"} max-w-full `}>
+                    <img src={scrolled ? mahatIcon : logo} alt="MAHAT Logo" className="h-full object-contain" />
+                </div>
 
             <div className="flex gap-4 sm:gap-7 md:gap-9 justify-between items-center">
                 <div
@@ -176,34 +178,45 @@ const Navbar = ({ setIsContactOpen, setIsTemplatesOpen }) => {
                     </button>
                 </div>
             </div>
+        </div>
+    </nav>
 
-            {/* Mobile Menu Overlay */}
-            <div className={`fixed inset-0 bg-[#0a0a0a]/98 backdrop-blur-xl z-[1000] flex flex-col items-center justify-center p-6 transition-all duration-500 ease-in-out ${isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"}`}>
-                <ul className="flex flex-col gap-4 xs:gap-6 items-center list-none m-0 p-0 text-center">
-                    {NAV_LINKS.map((link) => (
-                        <li key={link.name}>
-                            <a
-                                href={link.href}
-                                className={`no-underline uppercase text-xl xs:text-2xl tracking-[0.2em] xs:tracking-[0.3em] font-light transition-colors ${activeSection === link.href.slice(1) ? "text-[#f4103f]" : "text-white hover:text-[#f4103f]"}`}
-                                onClick={(e) => scrollToSection(e, link.href)}
-                            >
-                                {link.name}
-                            </a>
-                        </li>
-                    ))}
-                </ul>
+        {/* Mobile Menu Overlay */}
+        <div className={`fixed inset-0 bg-[#0a0a0a]/98 backdrop-blur-3xl z-[2000] flex flex-col items-center justify-center p-6 transition-all duration-500 ease-in-out ${isMenuOpen ? "opacity-100 translate-x-0" : "opacity-0 translate-x-full pointer-events-none"}`}>
+            <div className="absolute top-8 right-8 lg:hidden">
                 <button
-                    className="mt-8 bg-gradient-to-r from-[#f4103f] to-[#1140aa] text-white tracking-[0.2em] py-4 px-10 border-none rounded font-normal uppercase text-xs xs:text-sm cursor-pointer button-wave"
-                    onClick={() => {
-                        setIsMenuOpen(false);
-                        setIsContactOpen();
-                    }}
+                    className="p-2 text-white hover:text-[#f4103f] transition-colors"
+                    onClick={() => setIsMenuOpen(false)}
                 >
-                    GET IN TOUCH
+                    <svg width="32" height="32" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18 6L6 18M6 6L18 18" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                    </svg>
                 </button>
             </div>
-
-        </nav>
+            <ul className="flex flex-col gap-4 xs:gap-6 items-center list-none m-0 p-0 text-center">
+                {NAV_LINKS.map((link) => (
+                    <li key={link.name}>
+                        <a
+                            href={link.href}
+                            className={`no-underline uppercase text-xl xs:text-2xl tracking-[0.2em] xs:tracking-[0.3em] font-light transition-colors ${activeSection === link.href.slice(1) ? "text-[#f4103f]" : "text-white hover:text-[#f4103f]"}`}
+                            onClick={(e) => scrollToSection(e, link.href)}
+                        >
+                            {link.name}
+                        </a>
+                    </li>
+                ))}
+            </ul>
+            <button
+                className="mt-8 bg-gradient-to-r from-[#f4103f] to-[#1140aa] text-white tracking-[0.2em] py-4 px-10 border-none rounded font-normal uppercase text-xs xs:text-sm cursor-pointer button-wave"
+                onClick={() => {
+                    setIsMenuOpen(false);
+                    setIsContactOpen();
+                }}
+            >
+                GET IN TOUCH
+            </button>
+        </div>
+    </>
     );
 };
 

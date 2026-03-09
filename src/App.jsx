@@ -13,6 +13,7 @@ import ContactModal from './components/ContactModal'
 import TemplatesOverlay from './components/TemplatesOverlay'
 import MobileBottomNav from './components/MobileBottomNav'
 import StickyContact from './components/StickyContact'
+
 import './App.css'
 
 function App() {
@@ -66,10 +67,10 @@ function App() {
 
       {/* Global Background Lines */}
       <div className={`fixed inset-0 z-[1] pointer-events-none overflow-hidden transition-opacity duration-1000 ${showLines ? 'opacity-100' : 'opacity-0'}`}>
-        <div className="absolute top-0 bottom-0 left-[15%] w-[0.5px] bg-white opacity-[0.08] hidden lg:block"></div>
-        <div className="absolute top-0 bottom-0 left-[35%] w-[0.5px] bg-white opacity-[0.08] hidden lg:block"></div>
+        <div className="absolute top-0 bottom-0 left-[15%] w-[0.5px] bg-white opacity-[0.08]"></div>
+        <div className="absolute top-0 bottom-0 left-[35%] w-[0.5px] bg-white opacity-[0.08]"></div>
         {/* <div className="absolute top-0 bottom-0 left-[60%] w-[0.5px] bg-white opacity-[0.08] hidden lg:block"></div> */}
-        <div className="absolute top-0 bottom-0 left-[80%] w-[0.5px] bg-white opacity-[0.08] hidden lg:block"></div>
+        <div className="absolute top-0 bottom-0 left-[80%] w-[0.5px] bg-white opacity-[0.08]"></div>
       </div>
 
       <main className="relative">
@@ -78,6 +79,7 @@ function App() {
         <Services setIsContactOpen={openContactWithPlan} />
         <Pricing setIsContactOpen={openContactWithPlan} />
         <TemplateSale />
+        
         <Business />
         <Footer />
       </main>
