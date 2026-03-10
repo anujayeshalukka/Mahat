@@ -35,9 +35,9 @@ const ImagePreviewModal = ({ isOpen, onClose, image, alt }) => {
                 </div>
                 <button
                     onClick={onClose}
-                    className="p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-500 hover:rotate-90 group"
+                    className="p-2 md:p-3 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-500 hover:rotate-90 group"
                 >
-                    <IoClose size={28} className="group-hover:scale-110 transition-transform" />
+                    <IoClose className="text-xl md:text-3xl group-hover:scale-110 transition-transform" />
                 </button>
             </div>
 

@@ -66,6 +66,38 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
             setIsSubmitting(false);
         }
     };
+
+    const handleFullView = () => {
+        if (!template?.img) return;
+        const newWindow = window.open();
+        newWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>${template?.alt || 'Template'} - Live Preview</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        background-color: #050505;
+                        overflow-x: hidden;
+                    }
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                </style>
+            </head>
+            <body>
+                <img src="${template.img}" alt="${template.alt}">
+            </body>
+            </html>
+        `);
+        newWindow.document.close();
+    };
     // Prevent scrolling when modal is open
     useEffect(() => {
         if (isOpen) {
@@ -87,20 +119,29 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-6 right-6 z-50 p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300"
+                    className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300"
                 >
-                    <IoClose size={24} />
+                    <IoClose className="text-lg md:text-2xl" />
                 </button>
 
                 {/* Left Side: Template details */}
                 <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center">
-                    <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-8 group">
+                    <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-8 group cursor-pointer">
                         <img
                             src={template?.img}
                             alt={template?.alt}
                             className="w-full h-auto object-cover group-hover:scale-105 transition-transform duration-700"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent"></div>
+                        {/* Hover Overlay */}
+                        <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-all duration-500 flex items-center justify-center p-6">
+                            <button
+                                onClick={handleFullView}
+                                className="px-6 py-3 rounded-xl bg-white text-black font-bold text-[10px] uppercase tracking-widest hover:bg-[#f4103f] hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                            >
+                                Full View
+                            </button>
+                        </div>
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent pointer-events-none"></div>
                     </div>
 
                     <div className="space-y-6">

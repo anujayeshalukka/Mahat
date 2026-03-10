@@ -13,6 +13,7 @@ import ContactModal from './components/ContactModal'
 import TemplatesOverlay from './components/TemplatesOverlay'
 import MobileBottomNav from './components/MobileBottomNav'
 import StickyContact from './components/StickyContact'
+import WhatsAppButton from './components/WhatsAppButton'
 
 import './App.css'
 
@@ -102,6 +103,7 @@ function App() {
         setIsTemplatesOpen={setIsTemplatesOpen}
         setIsContactOpen={openContactWithPlan}
       />
+      <WhatsAppButton />
     </>
   )
 }

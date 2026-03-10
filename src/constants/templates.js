@@ -4,8 +4,8 @@ import ecommerceTemplate from '../assets/templates/ecommerce.png';
 import landingTemplate from '../assets/templates/landing.png';
 
 export const templates = [
-    { id: 1, img: businessTemplate, alt: "Business Elite Template" },
-    { id: 2, img: portfolioTemplate, alt: "Creative Portfolio Template" },
-    { id: 3, img: ecommerceTemplate, alt: "Digital Storefront Template" },
-    { id: 4, img: landingTemplate, alt: "Conversion Landing Template" }
+    { id: 1, img: businessTemplate, alt: "Restaurant & Café Website Templates" },
+    { id: 2, img: portfolioTemplate, alt: "Property Business Website Templates" },
+    { id: 3, img: ecommerceTemplate, alt: "Healthcare & Clinic Website Templates" },
+    { id: 4, img: landingTemplate, alt: "Business & Corporate Website Templates" }
 ];

@@ -103,13 +103,13 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
     };
 
     return (
-        <div className="fixed inset-0 z-9999 flex items-center justify-center bg-black/80 backdrop-blur-xl transition-all duration-500 overflow-y-auto p-4 md:p-8">
+        <div className="fixed inset-0 z-9999 flex items-start justify-center bg-black/80 backdrop-blur-xl transition-all duration-500 overflow-y-auto p-4 md:p-8 py-10 md:py-20">
             {/* Close Button - Outside modal to prevent clipping */}
             <button
                 onClick={onClose}
-                className="absolute top-6 right-6 z-50 p-2 rounded-full bg-black/20 border border-white/20 text-white/80 hover:bg-[#f4103f] hover:border-[#f4103f] hover:text-white transition-all duration-300"
+                className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 md:p-2 rounded-full bg-black/20 border border-white/20 text-white/80 hover:bg-[#f4103f] hover:border-[#f4103f] hover:text-white transition-all duration-300"
             >
-                <IoClose size={24} />
+                <IoClose className="text-xl md:text-2xl" />
             </button>
 
             <div className="relative w-full max-w-6xl bg-[#0a0a0a] border border-white/10 rounded-4xl overflow-hidden shadow-2xl flex flex-col md:flex-row min-h-150">
@@ -154,21 +154,21 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                 </div>
 
                 {/* Right Side: Form */}
-                <div className="w-full md:w-[65%] p-10 md:p-12 flex flex-col justify-center bg-white">
+                <div className="w-full md:w-[65%] p-10 md:p-12 flex flex-col justify-center bg-[#0a0a0a]">
                     <div className="mb-8 md:mb-10">
-                        <h3 className="text-2xl font-bold text-black mb-2">Send us a Message</h3>
-                        <p className="text-gray-500 text-sm md:text-base">We'll get back to you within 24 hours.</p>
+                        <h3 className="text-2xl font-bold text-white mb-2">Send us a Message</h3>
+                        <p className="text-white/50 text-sm md:text-base">We'll get back to you within 24 hours.</p>
                     </div>
 
                     {selectedPlan && selectedPlan.name && (
-                        <div className="mb-6 p-4 rounded-2xl bg-[#f4103f]/5 border border-[#f4103f]/10 flex items-center justify-between">
+                        <div className="mb-6 p-4 rounded-2xl bg-[#f4103f]/10 border border-[#f4103f]/20 flex items-center justify-between">
                             <div>
                                 <span className="text-[10px] text-[#f4103f] uppercase tracking-widest font-bold block mb-1">Enquiring for Package</span>
-                                <h4 className="text-black font-bold text-lg">{selectedPlan.name}</h4>
+                                <h4 className="text-white font-bold text-lg">{selectedPlan.name}</h4>
                             </div>
                             <div className="text-right">
-                                <span className="text-[10px] text-gray-400 uppercase tracking-widest font-bold block mb-1">Starting Price</span>
-                                <span className="text-black font-bold text-lg">{selectedPlan.price}</span>
+                                <span className="text-[10px] text-white/30 uppercase tracking-widest font-bold block mb-1">Starting Price</span>
+                                <span className="text-white font-bold text-lg">{selectedPlan.price}</span>
                             </div>
                         </div>
                     )}
@@ -176,7 +176,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                     <form className="space-y-4" onSubmit={handleSubmit}>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-1.5">
-                                <label className="text-[10px] text-gray-400 uppercase tracking-widest ml-1 font-bold">Full Name</label>
+                                <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Full Name</label>
                                 <input
                                     required
                                     type="text"
@@ -184,11 +184,11 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder="Enter your name"
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-[#f4103f]/30 focus:bg-white transition-all text-sm placeholder:text-gray-300 shadow-sm"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
                                 />
                             </div>
                             <div className="space-y-1.5">
-                                <label className="text-[10px] text-gray-400 uppercase tracking-widest ml-1 font-bold">Email Address</label>
+                                <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Email Address</label>
                                 <input
                                     required
                                     type="email"
@@ -196,32 +196,32 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="your@email.com"
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-[#f4103f]/30 focus:bg-white transition-all text-sm placeholder:text-gray-300 shadow-sm"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
                                 />
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-1.5">
-                                <label className="text-[10px] text-gray-400 uppercase tracking-widest ml-1 font-bold">Phone Number</label>
+                                <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Phone Number</label>
                                 <input
                                     type="tel"
                                     name="phone"
                                     value={formData.phone}
                                     onChange={handleChange}
                                     placeholder="+91 00000 00000"
-                                    className="w-full bg-gray-50 border border-gray-200 rounded-xl px-4 py-3 text-gray-800 focus:outline-none focus:border-[#f4103f]/30 focus:bg-white transition-all text-sm placeholder:text-gray-300 shadow-sm"
+                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
                                 />
                             </div>
                             <div className="space-y-1.5">
-                                <label className="text-[10px] text-gray-400 uppercase tracking-widest ml-1 font-bold">Interest</label>
+                                <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Interest</label>
                                 <div className="relative group/select">
                                     <div
                                         onClick={() => setIsServiceOpen(!isServiceOpen)}
-                                        className={`w-full bg-gray-50 border ${isServiceOpen ? 'border-[#f4103f]/30 bg-white ring-4 ring-[#f4103f]/5' : 'border-gray-200'} rounded-xl px-4 py-3 text-gray-800 transition-all text-sm shadow-sm cursor-pointer flex justify-between items-center`}
+                                        className={`w-full bg-white/5 border ${isServiceOpen ? 'border-[#f4103f]/50 bg-white/10 ring-4 ring-[#f4103f]/5' : 'border-white/10'} rounded-xl px-4 py-3 text-white transition-all text-sm shadow-sm cursor-pointer flex justify-between items-center`}
                                     >
                                         <span>{formData.service}</span>
-                                        <div className={`transition-transform duration-300 text-gray-400 ${isServiceOpen ? 'rotate-180 text-[#f4103f]' : ''}`}>
+                                        <div className={`transition-transform duration-300 text-white/30 ${isServiceOpen ? 'rotate-180 text-[#f4103f]' : ''}`}>
                                             <svg width="10" height="6" viewBox="0 0 10 6" fill="none" xmlns="http://www.w3.org/2000/svg">
                                                 <path d="M1 1L5 5L9 1" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
                                             </svg>
@@ -234,7 +234,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                                 className="fixed inset-0 z-10"
                                                 onClick={() => setIsServiceOpen(false)}
                                             ></div>
-                                            <div className="absolute top-full left-0 w-full mt-2 bg-white border border-gray-100 rounded-xl shadow-xl z-11 overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
+                                            <div className="absolute top-full left-0 w-full mt-2 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-2xl z-[60] overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200">
                                                 {["Web Development", "Graphic Design", "Branding", "Social Media", "Other"].map((option) => (
                                                     <div
                                                         key={option}
@@ -242,7 +242,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                                             setFormData(prev => ({ ...prev, service: option }));
                                                             setIsServiceOpen(false);
                                                         }}
-                                                        className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${formData.service === option ? 'bg-[#f4103f]/5 text-[#f4103f] font-medium' : 'text-gray-600 hover:bg-gray-50'}`}
+                                                        className={`px-4 py-2.5 text-sm cursor-pointer transition-colors ${formData.service === option ? 'bg-[#f4103f]/20 text-[#f4103f] font-medium' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
                                                     >
                                                         {option}
                                                     </div>
@@ -255,7 +255,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                         </div>
 
                         <div className="space-y-1.5">
-                            <label className="text-[10px] text-gray-400 uppercase tracking-widest ml-1 font-bold">Message</label>
+                            <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Message</label>
                             <textarea
                                 required
                                 name="message"
@@ -263,7 +263,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                 onChange={handleChange}
                                 rows="3"
                                 placeholder="Tell us about your project..."
-                                className="w-full bg-gray-50 border border-gray-100 rounded-xl px-4 py-4 text-gray-800 focus:outline-none focus:border-[#f4103f]/30 focus:bg-white transition-all text-sm resize-none placeholder:text-gray-300 shadow-sm"
+                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm resize-none placeholder:text-white/20 shadow-sm"
                             ></textarea>
                         </div>
 
@@ -288,11 +288,11 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                         </div>
 
                         <div className="pt-4 flex items-center justify-center gap-2">
-                            <div className="h-px w-8 bg-gray-100"></div>
-                            <p className="text-[10px] text-gray-400 text-center uppercase tracking-[0.3em] font-semibold">
+                            <div className="h-px w-8 bg-white/10"></div>
+                            <p className="text-[10px] text-white/20 text-center uppercase tracking-[0.3em] font-semibold">
                                 Visualising ideas | MAHAT
                             </p>
-                            <div className="h-px w-8 bg-gray-100"></div>
+                            <div className="h-px w-8 bg-white/10"></div>
                         </div>
                     </form>
                 </div>

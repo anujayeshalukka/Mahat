@@ -1,21 +1,9 @@
 import React from 'react';
-import ui1 from '../assets/UI1.png';
-import ui2 from '../assets/UI2.png';
-import ui3 from '../assets/UI3.png';
-import ui4 from '../assets/UI4.png';
+import { templates } from '../constants/templates';
 import TemplateEnquiryModal from './TemplateEnquiryModal';
-import ImagePreviewModal from './ImagePreviewModal';
-
-const templates = [
-    { id: 1, img: ui1, alt: "Restaurant & Café Website Templates", previewUrl: ui1 },
-    { id: 2, img: ui2, alt: "Healthcare & Clinic Website Templates", previewUrl: ui2 },
-    { id: 3, img: ui3, alt: "Property Business Website Templates", previewUrl: ui3 },
-    { id: 4, img: ui4, alt: "Business & Corporate Website Templates", previewUrl: ui4 }
-];
 
 const TemplateSale = () => {
     const [isModalOpen, setIsModalOpen] = React.useState(false);
-    const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
     const [selectedTemplate, setSelectedTemplate] = React.useState(null);
 
     const openEnquiryModal = (e, template) => {
@@ -25,8 +13,34 @@ const TemplateSale = () => {
     };
 
     const handlePreview = (template) => {
-        setSelectedTemplate(template);
-        setIsPreviewOpen(true);
+        const newWindow = window.open();
+        newWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>${template.alt} - Live Preview</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        background-color: #050505;
+                        overflow-x: hidden;
+                    }
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                </style>
+            </head>
+            <body>
+                <img src="${template.img}" alt="${template.alt}">
+            </body>
+            </html>
+        `);
+        newWindow.document.close();
     };
 
     return (
@@ -145,13 +159,6 @@ const TemplateSale = () => {
                 isOpen={isModalOpen}
                 onClose={() => setIsModalOpen(false)}
                 template={selectedTemplate}
-            />
-
-            <ImagePreviewModal
-                isOpen={isPreviewOpen}
-                onClose={() => setIsPreviewOpen(false)}
-                image={selectedTemplate?.img}
-                alt={selectedTemplate?.alt}
             />
         </section>
     );

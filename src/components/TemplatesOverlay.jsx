@@ -2,11 +2,9 @@ import React, { useEffect } from 'react';
 import { IoClose } from 'react-icons/io5';
 import { templates } from '../constants/templates';
 import TemplateEnquiryModal from './TemplateEnquiryModal';
-import ImagePreviewModal from './ImagePreviewModal';
 
 const TemplatesOverlay = ({ isOpen, onClose }) => {
     const [isEnquiryOpen, setIsEnquiryOpen] = React.useState(false);
-    const [isPreviewOpen, setIsPreviewOpen] = React.useState(false);
     const [selectedTemplate, setSelectedTemplate] = React.useState(null);
 
     // Prevent scrolling when overlay is open
@@ -29,17 +27,55 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
         setIsEnquiryOpen(true);
     };
 
+    const handleFullView = (template) => {
+        const newWindow = window.open();
+        newWindow.document.write(`
+            <!DOCTYPE html>
+            <html lang="en">
+            <head>
+                <meta charset="UTF-8">
+                <meta name="viewport" content="width=device-width, initial-scale=1.0">
+                <title>${template.alt} - Live Preview</title>
+                <style>
+                    body {
+                        margin: 0;
+                        padding: 0;
+                        background-color: #050505;
+                        overflow-x: hidden;
+                    }
+                    img {
+                        width: 100%;
+                        height: auto;
+                        display: block;
+                    }
+                </style>
+            </head>
+            <body>
+                <img src="${template.img}" alt="${template.alt}">
+            </body>
+            </html>
+        `);
+        newWindow.document.close();
+    };
+
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/40 backdrop-blur-2xl transition-all duration-500 overflow-hidden">
+        <div className="fixed inset-0 z-[2000] flex items-start justify-center bg-black/40 backdrop-blur-2xl transition-all duration-500 overflow-hidden">
             {/* Overlay Background Animation */}
             <div className="absolute inset-0 z-0">
                 <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-[#f4103f]/10 rounded-full blur-[120px] animate-pulse"></div>
                 <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-[#1140aa]/10 rounded-full blur-[120px] animate-pulse delay-700"></div>
             </div>
 
-            <div className="relative w-full h-full flex flex-col p-6 md:p-12 lg:p-20 z-10 overflow-y-auto overscroll-contain">
+            <div className="relative w-full h-full flex flex-col p-6 md:p-12 lg:p-20 z-10 overflow-y-auto overscroll-contain overflow-x-hidden py-10 md:py-20">
+                {/* Close Button - Moved out for visibility */}
+                <button
+                    onClick={onClose}
+                    className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-2 md:p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-500 hover:rotate-90 group"
+                >
+                    <IoClose className="text-xl md:text-3xl group-hover:scale-110 transition-transform" />
+                </button>
                 {/* Header Section */}
                 <div className="flex justify-between items-start mb-12 md:mb-16">
 
@@ -56,18 +92,11 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
                                 </div>
 
                     <h2 className="text-white text-3xl sm:text-4xl md:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight">
-                        Premium Website<span className="service-highlight font-light whitespace-nowrap sm:whitespace-normal">Templates</span>
+                        Premium Website<span className="service-highlight font-light sm:whitespace-normal"> Templates</span>
                     </h2>
                 </div>
 
 
-
-                    <button
-                        onClick={onClose}
-                        className="p-3 md:p-4 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-500 hover:rotate-90 group"
-                    >
-                        <IoClose size={32} className="group-hover:scale-110 transition-transform" />
-                    </button>
                 </div>
 
                 {/* Templates Grid */}
@@ -82,18 +111,20 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
                                     <img
                                         src={template.img}
                                         alt={template.alt}
-                                        onClick={() => {
-                                            setSelectedTemplate(template);
-                                            setIsPreviewOpen(true);
-                                        }}
                                         className="w-full h-full object-cover object-top opacity-80 group-hover:opacity-100 group-hover:scale-110 transition-all duration-1000 ease-out cursor-pointer"
                                     />
 
                                 {/* Hover Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-8">
+                                <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col justify-end p-6 gap-3">
+                                    <button
+                                        onClick={() => handleFullView(template)}
+                                        className="w-full py-3 rounded-xl bg-white text-black font-bold text-[10px] uppercase tracking-widest hover:bg-[#f4103f] hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                                    >
+                                        Full View
+                                    </button>
                                     <button
                                         onClick={() => handleEnquire(template)}
-                                        className="w-full py-4 rounded-xl bg-white text-black font-bold text-xs uppercase tracking-widest hover:bg-[#f4103f] hover:text-white transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
+                                        className="w-full py-3 rounded-xl bg-white/10 backdrop-blur-md border border-white/20 text-white font-bold text-[10px] uppercase tracking-widest hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300 transform translate-y-4 group-hover:translate-y-0"
                                     >
                                         Enquire Now
                                     </button>
@@ -134,13 +165,6 @@ const TemplatesOverlay = ({ isOpen, onClose }) => {
                 isOpen={isEnquiryOpen}
                 onClose={() => setIsEnquiryOpen(false)}
                 template={selectedTemplate}
-            />
-
-            <ImagePreviewModal
-                isOpen={isPreviewOpen}
-                onClose={() => setIsPreviewOpen(false)}
-                image={selectedTemplate?.img}
-                alt={selectedTemplate?.alt}
             />
         </div>
     );
