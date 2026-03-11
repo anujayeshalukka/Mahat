@@ -111,31 +111,41 @@ const TemplateSale = () => {
                 {/* Templates Grid */}
                 <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
                     {templates.map((template) => (
-                        <div
-                            key={template.id}
-                            onClick={() => handlePreview(template)}
-                            className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/5] transition-all duration-500 hover:border-[#f4103f]/50 cursor-pointer shadow-2xl"
-                        >
-                            <img
-                                src={template.img}
-                                alt={template.alt}
-                                className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out"
-                            />
-                            
-                            {/* Hover Overlay */}
-                            <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 text-center">
-                                <span className="text-white text-lg font-bold tracking-[0.2em] uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
-                                    Full View
-                                </span>
-                                <div className="w-12 h-[2px] bg-gradient-to-r from-[#f4103f] to-[#1140aa] mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+                        <div key={template.id} className="flex flex-col gap-4">
+                            <div
+                                onClick={() => handlePreview(template)}
+                                className="group relative rounded-2xl overflow-hidden border border-white/10 bg-white/5 aspect-[4/5] transition-all duration-500 hover:border-[#f4103f]/50 cursor-pointer shadow-2xl"
+                            >
+                                <img
+                                    src={template.img}
+                                    alt={template.alt}
+                                    className="w-full h-full object-cover object-top opacity-90 group-hover:opacity-100 group-hover:scale-110 transition-all duration-700 ease-out"
+                                />
                                 
-                                <button
-                                    onClick={(e) => openEnquiryModal(e, template)}
-                                    className="mt-8 px-6 py-2 rounded-full border border-white/20 bg-white/5 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 delay-100"
-                                >
-                                    Enquire Now
-                                </button>
+                                {/* Hover Overlay (Desktop) */}
+                                <div className="absolute inset-0 bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-all duration-500 flex flex-col items-center justify-center p-6 text-center">
+                                    <span className="text-white text-lg font-bold tracking-[0.2em] uppercase transform translate-y-4 group-hover:translate-y-0 transition-transform duration-500">
+                                        Full View
+                                    </span>
+                                    <div className="w-12 h-[2px] bg-gradient-to-r from-[#f4103f] to-[#1140aa] mt-4 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-500 origin-center"></div>
+                                    
+                                    <button
+                                        onClick={(e) => openEnquiryModal(e, template)}
+                                        className="mt-8 px-6 py-2 rounded-full border border-white/20 bg-white/5 text-white text-[10px] font-bold uppercase tracking-widest hover:bg-white hover:text-black transition-all duration-300 opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 delay-100"
+                                    >
+                                        Enquire Now
+                                    </button>
+                                </div>
                             </div>
+                            
+                            {/* Mobile Enquiry Button - Visible only on mobile/tablet */}
+                            <button
+                                onClick={(e) => openEnquiryModal(e, template)}
+                                className="sm:hidden w-full py-4 rounded-xl bg-white/5 border border-white/10 text-white text-xs font-bold uppercase tracking-widest hover:bg-white/10 transition-all duration-300 flex items-center justify-center gap-2 group"
+                            >
+                                <span>Enquire Now</span>
+                                <div className="w-5 h-[1px] bg-gradient-to-r from-[#f4103f] to-[#1140aa] transition-all duration-300 group-hover:w-8"></div>
+                            </button>
                         </div>
                     ))}
                 </div>

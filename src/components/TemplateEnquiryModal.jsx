@@ -113,19 +113,19 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
     if (!isOpen) return null;
 
     return (
-        <div className="fixed inset-0 z-[9999] flex items-center justify-center bg-black/95 backdrop-blur-xl transition-all duration-500 overflow-y-auto">
-            <div className="relative w-full min-h-screen md:h-auto md:max-h-[90vh] md:w-[95%] lg:w-[85%] bg-[#0a0a0a] border border-white/10 rounded-none md:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
+        <div className="fixed inset-0 z-[9999] flex items-start md:items-center justify-center bg-black/95 backdrop-blur-xl transition-all duration-500 overflow-y-auto pt-4 md:pt-0">
+            <div className="relative w-full min-h-screen md:min-h-0 md:h-auto md:max-h-[90vh] md:w-[95%] lg:w-[85%] bg-[#0a0a0a] border-x border-b md:border border-white/10 rounded-none md:rounded-3xl overflow-hidden shadow-2xl flex flex-col md:flex-row">
 
                 {/* Close Button */}
                 <button
                     onClick={onClose}
-                    className="absolute top-4 right-4 md:top-6 md:right-6 z-50 p-1.5 md:p-2 rounded-full bg-white/5 border border-white/10 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300"
+                    className="fixed md:absolute top-4 right-4 md:top-6 md:right-6 z-[10000] p-1.5 md:p-2 rounded-full bg-white/10 border border-white/20 text-white hover:bg-[#f4103f] hover:border-[#f4103f] transition-all duration-300 shadow-xl"
                 >
-                    <IoClose className="text-lg md:text-2xl" />
+                    <IoClose className="text-xl md:text-2xl" />
                 </button>
 
                 {/* Left Side: Template details */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-center">
+                <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-16 border-b md:border-b-0 md:border-r border-white/10 flex flex-col justify-start md:justify-center">
                     <div className="relative rounded-2xl overflow-hidden border border-white/10 mb-8 group cursor-pointer">
                         <img
                             src={template?.img}
@@ -193,7 +193,7 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                 </div>
 
                 {/* Right Side: Enquiry Form */}
-                <div className="w-full md:w-1/2 p-8 md:p-12 lg:p-16 bg-white/[0.02] flex flex-col justify-center">
+                <div className="w-full md:w-1/2 p-6 md:p-12 lg:p-16 bg-white/[0.02] flex flex-col justify-start md:justify-center">
                     <div className="max-w-md mx-auto w-full">
                         <div className="mb-8">
                             <h3 className="text-2xl font-bold text-white mb-2">Enquire Now</h3>
