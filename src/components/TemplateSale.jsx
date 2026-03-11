@@ -66,6 +66,7 @@ const TemplateSale = () => {
                         </h2>
 
                         <p className="text-white text-sm md:text-base lg:text-lg leading-[1.8] font-normal max-w-[750px] opacity-90">
+                            <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">READY-MADE</span>
                             Accelerate your digital presence with our high-performance website templates. We offer a curated selection of pre-built, premium layouts designed to give your business a professional edge without the long development wait. Each design is optimized for speed, conversion, and seamless user experience.
                         </p>
 

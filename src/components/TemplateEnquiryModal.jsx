@@ -237,7 +237,7 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                                     onChange={handleChange}
                                     type="text"
                                     placeholder="John Doe"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm"
                                 />
                             </div>
 
@@ -251,7 +251,7 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                                         onChange={handleChange}
                                         type="email"
                                         placeholder="john@example.com"
-                                        className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm`}
+                                        className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm`}
                                     />
                                     {errors.email && <p className="text-[10px] text-red-500 ml-1">{errors.email}</p>}
                                 </div>
@@ -262,6 +262,7 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                                         value={formData.phone}
                                         onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
                                         placeholder="00000 00000"
+                                        error={errors.phone}
                                     />
                                     {errors.phone && <p className="text-[10px] text-red-500 ml-1">{errors.phone}</p>}
                                 </div>
@@ -275,7 +276,7 @@ const TemplateEnquiryModal = ({ isOpen, onClose, template }) => {
                                     onChange={handleChange}
                                     rows="4"
                                     placeholder="Tell us about your brand..."
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm resize-none"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-5 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm resize-none"
                                 ></textarea>
                             </div>
 

@@ -212,7 +212,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.name}
                                     onChange={handleChange}
                                     placeholder="Enter your name"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
+                                    className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
                                 />
                             </div>
                             <div className="space-y-1.5">
@@ -224,7 +224,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="your@email.com"
-                                    className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm`}
+                                    className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm`}
                                 />
                                 {errors.email && <p className="text-[10px] text-red-500 ml-1">{errors.email}</p>}
                             </div>
@@ -238,6 +238,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.phone}
                                     onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
                                     placeholder="00000 00000"
+                                    error={errors.phone}
                                 />
                                 {errors.phone && <p className="text-[10px] text-red-500 ml-1">{errors.phone}</p>}
                             </div>
@@ -291,7 +292,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                 onChange={handleChange}
                                 rows="3"
                                 placeholder="Tell us about your project..."
-                                className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm resize-none placeholder:text-white/20 shadow-sm"
+                                className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-5 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm resize-none placeholder:text-white/20 shadow-sm"
                             ></textarea>
                         </div>
 
@@ -318,7 +319,7 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                         <div className="pt-4 flex items-center justify-center gap-2">
                             <div className="h-px w-8 bg-white/10"></div>
                             <p className="text-[10px] text-white/20 text-center uppercase tracking-[0.3em] font-semibold">
-                                Visualising ideas | MAHAT
+                                Visualising !deas | MAHAT
                             </p>
                             <div className="h-px w-8 bg-white/10"></div>
                         </div>

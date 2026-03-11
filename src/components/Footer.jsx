@@ -115,7 +115,8 @@ const Footer = () => {
                                 Ready to Start Your <br />
                                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#f4103f] to-[#1140aa]">Next Project?</span>
                             </h2>
-                            <p className="text-white/40 text-lg max-w-md leading-relaxed">
+                            <p className="text-white text-lg max-w-md leading-relaxed">
+                                <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">CONTACT</span>
                                 We turn complex ideas into seamless digital experiences. Reach out and let's discuss how we can help your business grow.
                             </p>
                         </div>
@@ -128,13 +129,13 @@ const Footer = () => {
                                         <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#f4103f] group-hover:border-[#f4103f] transition-all">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path><polyline points="22,6 12,13 2,6"></polyline></svg>
                                         </div>
-                                        <span className="text-lg">wearemahat@gmail.com</span>
+                                        <span className="text-lg text-white">wearemahat@gmail.com</span>
                                     </a>
                                     <a href="tel:+919747429019" className="group flex items-center gap-4 text-white/70 hover:text-white transition-colors">
                                         <div className="w-10 h-10 rounded-full border border-white/10 flex items-center justify-center group-hover:bg-[#f4103f] group-hover:border-[#f4103f] transition-all">
                                             <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
                                         </div>
-                                        <span className="text-lg">+91 9747 429019</span>
+                                        <span className="text-lg text-white">+91 9747 429019</span>
                                     </a>
                                 </div>
                             </div>
@@ -192,6 +193,7 @@ const Footer = () => {
                                             value={formData.phone}
                                             onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
                                             placeholder="00000 00000"
+                                            error={errors.phone}
                                         />
                                         {errors.phone && <p className="text-[10px] text-red-500 ml-1">{errors.phone}</p>}
                                     </div>
@@ -274,7 +276,7 @@ const Footer = () => {
                     
                     <div className="flex items-center gap-2">
                         <div className="h-px w-8 bg-white/10"></div>
-                        <p className="text-[10px] text-white/20 text-center uppercase tracking-[0.3em] font-medium">Visualising ideas</p>
+                        <p className="text-[10px] text-white/20 text-center uppercase tracking-[0.3em] font-medium">Visualising !deas</p>
                         <div className="h-px w-8 bg-white/10"></div>
                     </div>
                 </div>

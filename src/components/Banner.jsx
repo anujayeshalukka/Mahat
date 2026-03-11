@@ -9,7 +9,7 @@ const Banner = ({ setIsContactOpen }) => {
                 </h1>
                 <div className='flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-10 w-full mt-8 md:mt-5'>
                     <p className='text-white max-w-150 leading-[1.8] text-sm md:text-base font-light text-left'>
-                        <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">ABOUT</span>
+                        <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">HOME</span>
                         We are a digital studio delivering UI/UX design, website development, digital marketing, and graphic design to help businesses build strong, modern, and growth-focused online identities.
                     </p>
 

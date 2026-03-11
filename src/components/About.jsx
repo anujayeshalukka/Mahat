@@ -49,7 +49,7 @@ const About = ({ setIsContactOpen }) => {
                             <div className="flex flex-col gap-6 md:gap-10">
                                 <div className="flex items-center gap-6">
                                     <span className="text-white text-sm md:text-base tracking-[0.05em] font-medium">
-                                        Next Creative Digital Agency
+                                        Visualising Ideas into Digital Experiences
                                     </span>
                                     <div className="w-16 h-[0.5px] bg-white/20 relative">
                                         <span className="absolute right-0 top-[-2px] w-[6px] h-[6px] border-t border-r border-white/20 rotate-45"></span>
@@ -64,7 +64,8 @@ const About = ({ setIsContactOpen }) => {
                                 </h2>
 
                                 <p className="text-white text-sm md:text-base lg:text-lg leading-[1.8] font-normal max-w-[750px] opacity-90">
-                                    Crafting Digital interfaces That Inspire and Convert. We are a forward-thinking digital studio dedicated to transforming complex challenges into elegant solutions. Our multidisciplinary team combines strategic thinking with pixel-perfect design to help brands stand out in the digital landscape.
+                                    <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">ABOUT</span>
+                                    MAHAT is a creative digital studio built to deliver complete solutions—from design to development to marketing. We collaborate with businesses, startups, and personal brands to create strong digital identities and high-performing websites. With a combination of UI/UX expertise, frontend development, and creative design, we ensure every project is both visually appealing and functionally effective.
                                 </p>
                             </div>
 
@@ -152,7 +153,7 @@ const About = ({ setIsContactOpen }) => {
                             <div className="flex flex-col gap-6 order-1 lg:order-2">
                                 <div className="flex items-center gap-6">
                                     <span className="text-white text-sm md:text-base tracking-[0.05em] font-medium">
-                                        Visualising Ideas into Digital Experiences
+                                       Next Creative Digital Agency
                                     </span>
                                     <div className="w-16 h-[0.5px] bg-white/20 relative">
                                         <span className="absolute right-0 top-[-2px] w-[6px] h-[6px] border-t border-r border-white/20 rotate-45"></span>
@@ -164,9 +165,8 @@ const About = ({ setIsContactOpen }) => {
                                     
                                 </h2>
                                 <p className="text-white/80 text-lg leading-[1.8] font-light">
-                                    MAHAT is a creative digital studio built to deliver complete solutions—from design to development to marketing.
-                                    We collaborate with businesses, startups, and personal brands to create strong digital identities and high-performing websites.
-                                    With a combination of UI/UX expertise, frontend development, and creative design, we ensure every project is both visually appealing and functionally effective.
+                                <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">MAHAT</span>
+                                    Crafting Digital interfaces That Inspire and Convert. We are a forward-thinking digital studio dedicated to transforming complex challenges into elegant solutions. Our multidisciplinary team combines strategic thinking with pixel-perfect design to help brands stand out in the digital landscape.
                                 </p>
                             </div>
                         </div>

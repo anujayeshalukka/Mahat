@@ -13,10 +13,10 @@ const countryCodes = [
     { code: '+966', name: 'Saudi Arabia', flag: '🇸🇦' },
     { code: '+974', name: 'Qatar', flag: '🇶🇦' },
     { code: '+965', name: 'Kuwait', flag: '🇰🇼' },
-    { code: '+9Om', name: 'Oman', flag: '🇴🇲' }, 
+    { code: '+968', name: 'Oman', flag: '🇴🇲' }, 
 ];
 
-const PhoneInput = ({ value, onChange, placeholder, required }) => {
+const PhoneInput = ({ value, onChange, placeholder, required, error }) => {
     const [isOpen, setIsOpen] = useState(false);
     
     // Parse initial value
@@ -46,15 +46,15 @@ const PhoneInput = ({ value, onChange, placeholder, required }) => {
     };
 
     return (
-        <div className="relative flex w-full">
+        <div className={`relative flex w-full bg-white/5 border ${error ? 'border-red-500/50' : 'border-white/10'} rounded-2xl transition-all focus-within:border-[#f4103f]/50 focus-within:bg-white/[0.08] shadow-sm`}>
             {/* Country Code Dropdown */}
-            <div className="relative h-full">
+            <div className="relative flex items-center h-full">
                 <div
                     onClick={() => setIsOpen(!isOpen)}
-                    className="flex items-center gap-2 h-full bg-white/5 border border-white/10 rounded-l-xl px-3 py-3 text-white cursor-pointer hover:bg-white/10 transition-all border-r-0"
+                    className="flex items-center gap-2 h-full px-4 py-4 text-white cursor-pointer hover:bg-white/5 transition-all border-r border-white/10"
                 >
-                    <span className="text-sm font-medium">{selectedCode}</span>
-                    <svg className={`w-3 h-3 transition-transform ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <span className="text-sm font-medium whitespace-nowrap">{selectedCode}</span>
+                    <svg className={`w-3 h-3 transition-transform text-white/40 ${isOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                         <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7" />
                     </svg>
                 </div>
@@ -62,17 +62,17 @@ const PhoneInput = ({ value, onChange, placeholder, required }) => {
                 {isOpen && (
                     <>
                         <div className="fixed inset-0 z-[100]" onClick={() => setIsOpen(false)}></div>
-                        <div className="absolute top-full left-0 mt-2 w-48 bg-[#1a1a1a] border border-white/10 rounded-xl shadow-2xl z-[101] overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-xl">
-                            <div className="max-h-60 overflow-y-auto custom-scrollbar">
+                        <div className="absolute top-full left-0 mt-2 w-52 bg-[#0a0a0a] border border-white/10 rounded-2xl shadow-2xl z-[101] overflow-hidden py-2 animate-in fade-in slide-in-from-top-2 duration-200 backdrop-blur-3xl">
+                            <div className="max-h-64 overflow-y-auto custom-scrollbar">
                                 {countryCodes.map((c) => (
                                     <div
                                         key={c.code + c.name}
                                         onClick={() => handleCodeChange(c.code)}
-                                        className={`px-4 py-2.5 text-sm cursor-pointer flex items-center gap-3 transition-colors ${selectedCode === c.code ? 'bg-[#f4103f]/20 text-[#f4103f]' : 'text-white/70 hover:bg-white/5 hover:text-white'}`}
+                                        className={`px-5 py-3 text-sm cursor-pointer flex items-center gap-3 transition-colors ${selectedCode === c.code ? 'bg-[#f4103f]/10 text-[#f4103f] font-medium' : 'text-white/60 hover:bg-white/5 hover:text-white'}`}
                                     >
-                                        <span>{c.flag}</span>
-                                        <span className="flex-1">{c.name}</span>
-                                        <span className="text-white/30 text-[10px]">{c.code}</span>
+                                        <span className="text-lg">{c.flag}</span>
+                                        <span className="flex-1 truncate">{c.name}</span>
+                                        <span className="text-white/20 text-[10px]">{c.code}</span>
                                     </div>
                                 ))}
                             </div>
@@ -88,7 +88,7 @@ const PhoneInput = ({ value, onChange, placeholder, required }) => {
                 value={phoneNumber}
                 onChange={handleNumberChange}
                 placeholder={placeholder || "00000 00000"}
-                className="flex-1 bg-white/5 border border-white/10 rounded-r-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm border-l-0"
+                className="flex-1 bg-transparent px-5 py-4 text-white focus:outline-none transition-all text-sm placeholder:text-white/20 min-w-0"
             />
         </div>
     );

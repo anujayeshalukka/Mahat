@@ -61,7 +61,8 @@ const Services = ({ setIsContactOpen }) => {
                         </h2>
 
                         <p className="mt-6 md:mt-10 text-white text-sm md:text-base lg:text-lg leading-[1.8] font-normal max-w-[750px] opacity-90">
-                            Artificial Intelligence refers to the development of computer systems that can perform tasks that would typically require human intelligence. It involves the creation of algorithms and models that enable machines to learn, reason, perceive, and make decisions.
+                            <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">SERVICES</span>
+                           At MAHAT, we help businesses bring their ideas to life online. From website design and UI/UX development to landing pages and custom web solutions, we create digital experiences that are both beautiful and easy to use. Our goal is to build websites that not only look great but also help brands connect with their audience, grow their presence, and move closer to their business goals.
                         </p>
 
                         <button
