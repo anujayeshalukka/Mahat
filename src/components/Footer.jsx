@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import PhoneInput from './PhoneInput';
 
 const Footer = () => {
     const [formData, setFormData] = useState({
@@ -12,6 +13,16 @@ const Footer = () => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
     const [isServiceOpen, setIsServiceOpen] = useState(false);
+    const [errors, setErrors] = useState({});
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        const number = phone.split(' ')[1] || '';
+        return number.length >= 8 && number.length <= 15;
+    };
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -20,6 +31,22 @@ const Footer = () => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
+        // Strict Validation
+        const newErrors = {};
+        if (!validateEmail(formData.email)) {
+            newErrors.email = 'Please enter a valid email address';
+        }
+        if (!validatePhone(formData.phone)) {
+            newErrors.phone = 'Please enter a valid phone number';
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
+        setErrors({});
         setIsSubmitting(true);
         setSubmitStatus(null);
 
@@ -151,22 +178,22 @@ const Footer = () => {
                                             onChange={handleChange}
                                             type="email"
                                             placeholder="your@email.com"
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/[0.08] transition-all text-sm"
+                                            className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/[0.08] transition-all text-sm`}
                                         />
+                                        {errors.email && <p className="text-[10px] text-red-500 ml-1">{errors.email}</p>}
                                     </div>
                                 </div>
 
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Phone Number</label>
-                                        <input
-                                            name="phone"
+                                        <PhoneInput
+                                            required
                                             value={formData.phone}
-                                            onChange={handleChange}
-                                            type="tel"
-                                            placeholder="+91"
-                                            className="w-full bg-white/5 border border-white/10 rounded-2xl px-5 py-4 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/[0.08] transition-all text-sm"
+                                            onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
+                                            placeholder="00000 00000"
                                         />
+                                        {errors.phone && <p className="text-[10px] text-red-500 ml-1">{errors.phone}</p>}
                                     </div>
                                     <div className="space-y-2">
                                         <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Interest</label>

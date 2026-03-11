@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { IoClose } from 'react-icons/io5';
 import logo from '../assets/MAHATicon.png';
+import PhoneInput from './PhoneInput';
 
 const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
     const [formData, setFormData] = useState({
@@ -14,6 +15,17 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
     const [isSubmitting, setIsSubmitting] = useState(false);
     const [submitStatus, setSubmitStatus] = useState(null); // 'success' | 'error' | null
     const [isServiceOpen, setIsServiceOpen] = useState(false);
+    const [errors, setErrors] = useState({});
+
+    const validateEmail = (email) => {
+        return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
+    };
+
+    const validatePhone = (phone) => {
+        // Remove country code for length check
+        const number = phone.split(' ')[1] || '';
+        return number.length >= 8 && number.length <= 15;
+    };
 
     // Handle selected plan pre-fill
     useEffect(() => {
@@ -54,6 +66,22 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+        
+        // Strict Validation
+        const newErrors = {};
+        if (!validateEmail(formData.email)) {
+            newErrors.email = 'Please enter a valid email address';
+        }
+        if (!validatePhone(formData.phone)) {
+            newErrors.phone = 'Please enter a valid phone number';
+        }
+
+        if (Object.keys(newErrors).length > 0) {
+            setErrors(newErrors);
+            return;
+        }
+
+        setErrors({});
         setIsSubmitting(true);
         setSubmitStatus(null);
 
@@ -196,22 +224,22 @@ const ContactModal = ({ isOpen, onClose, selectedPlan }) => {
                                     value={formData.email}
                                     onChange={handleChange}
                                     placeholder="your@email.com"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
+                                    className={`w-full bg-white/5 border ${errors.email ? 'border-red-500/50' : 'border-white/10'} rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm`}
                                 />
+                                {errors.email && <p className="text-[10px] text-red-500 ml-1">{errors.email}</p>}
                             </div>
                         </div>
 
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                             <div className="space-y-1.5">
                                 <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Phone Number</label>
-                                <input
-                                    type="tel"
-                                    name="phone"
+                                <PhoneInput
+                                    required
                                     value={formData.phone}
-                                    onChange={handleChange}
-                                    placeholder="+91 00000 00000"
-                                    className="w-full bg-white/5 border border-white/10 rounded-xl px-4 py-3 text-white focus:outline-none focus:border-[#f4103f]/50 focus:bg-white/10 transition-all text-sm placeholder:text-white/20 shadow-sm"
+                                    onChange={(val) => setFormData(prev => ({ ...prev, phone: val }))}
+                                    placeholder="00000 00000"
                                 />
+                                {errors.phone && <p className="text-[10px] text-red-500 ml-1">{errors.phone}</p>}
                             </div>
                             <div className="space-y-1.5">
                                 <label className="text-[10px] text-white/30 uppercase tracking-widest ml-1 font-bold">Interest</label>
