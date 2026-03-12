@@ -271,7 +271,7 @@ const Footer = () => {
 
                 <div className="pt-12 border-t border-white/5 flex flex-col md:flex-row justify-between items-center gap-6">
                     <div className="flex flex-col items-center md:items-start">
-                        <p className="text-white/20 text-[10px] text-center md:text-left uppercase tracking-[0.4em]">© 2024 MAHAT STUDIO. ALL RIGHTS RESERVED.</p>
+                        <p className="text-white/20 text-[10px] text-center md:text-left uppercase tracking-[0.4em]">© 2026 MAHAT STUDIO. ALL RIGHTS RESERVED.</p>
                     </div>
                     
                     <div className="flex items-center gap-2">
