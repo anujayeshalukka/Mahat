@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mahatstudio.com/sitemap.xml
+Sitemap: https://wearemahat.com/sitemap.xml
