@@ -1,7 +1,8 @@
 import React from 'react';
 import { IoLogoWhatsapp } from 'react-icons/io5';
 
-const WhatsAppButton = () => {
+// Default position leaves room for the Portfolio pill directly below (16px gap).
+const WhatsAppButton = ({ positionClass = "bottom-[134px] right-5 lg:bottom-[94px] lg:right-10" }) => {
   const phoneNumber = "919747429019";
   const whatsappUrl = `https://wa.me/${phoneNumber}`;
 
@@ -10,7 +11,7 @@ const WhatsAppButton = () => {
       href={whatsappUrl}
       target="_blank"
       rel="noopener noreferrer"
-      className="fixed bottom-24 right-5 z-[90] lg:bottom-10 lg:right-10 group"
+      className={`fixed z-[90] group ${positionClass}`}
       aria-label="Chat on WhatsApp"
     >
       {/* Tooltip */}
