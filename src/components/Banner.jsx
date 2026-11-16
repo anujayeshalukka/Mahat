@@ -7,7 +7,7 @@ const Banner = ({ setIsContactOpen }) => {
                     <span className="font-extralight block sm:inline uppercase">CREATIVE </span>
                     Digital Agency.
                 </h1>
-                <div className='flex flex-col md:flex-row items-start md:items-end justify-between gap-6 md:gap-10 w-full mt-8 md:mt-5'>
+                <div className='flex flex-col md:flex-row items-start md:items-center gap-3 md:gap-4 w-full mt-8 md:mt-5'>
                     <p className='text-white max-w-150 leading-[1.8] text-sm md:text-base font-light text-left'>
                         <span className="font-extralight text-[10px] mr-5 md:mr-10 uppercase tracking-[0.5em] block md:inline mb-4 md:mb-0">HOME</span>
                         We are a digital studio delivering UI/UX design, website development, digital marketing, and graphic design to help businesses build strong, modern, and growth-focused online identities.
@@ -15,7 +15,7 @@ const Banner = ({ setIsContactOpen }) => {
 
                     <button
                         onClick={() => setIsContactOpen()}
-                        className="cursor-pointer group"
+                        className="cursor-pointer group shrink-0"
                     >
                         <div className="flex flex-col items-end w-fit">
                             <span className="text-white text-xs tracking-widest uppercase font-light">Consult</span>

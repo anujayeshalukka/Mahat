@@ -14,6 +14,7 @@ import TemplatesOverlay from './components/TemplatesOverlay'
 import MobileBottomNav from './components/MobileBottomNav'
 import StickyContact from './components/StickyContact'
 import WhatsAppButton from './components/WhatsAppButton'
+import PortfolioButton from './components/PortfolioButton'
 
 import './App.css'
 
@@ -104,6 +105,7 @@ function App() {
         setIsContactOpen={openContactWithPlan}
       />
       <WhatsAppButton />
+      <PortfolioButton />
     </>
   )
 }
